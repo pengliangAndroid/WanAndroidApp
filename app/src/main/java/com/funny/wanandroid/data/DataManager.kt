@@ -42,4 +42,6 @@ class DataManager private constructor(){
     fun getHomeArticleList(pageNum : Int) : Observable<HttpResult<PageBean<ArticleInfo>>> {
         return RetrofitHelper.getService(ServiceRestApi::class.java).getHomeArticleList(pageNum)
     }
+
+
 }
