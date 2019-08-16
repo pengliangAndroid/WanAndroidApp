@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name"></string>
+
+
+    <string name="msg_permission_refuse_text">已拒绝权限%1$s并不再询问</string>
+    <string name="msg_permission_rationale_text">此功能需要%1$s权限，否则无法正常使用，是否打开设置</string>
+    <string name="msg_permission_positive_text">好的</string>
+    <string name="msg_permission_negative_text">残忍拒绝</string>
+
+
+</resources>
