@@ -17,6 +17,8 @@ import okhttp3.RequestBody
  */
 class DataManager private constructor(){
 
+    val retrofitHelper : RetrofitHelper by lazy { RetrofitHelper() }
+
     companion object{
         private const val JSON = "application/json;charset=utf-8"
 
@@ -36,12 +38,16 @@ class DataManager private constructor(){
     }
 
     fun getHomeProjectList(pageNum : Int) : Observable<HttpResult<PageBean<ProjectInfo>>> {
-        return RetrofitHelper.getService(ServiceRestApi::class.java).getHomeProjectList(pageNum)
+        return retrofitHelper.getService(ServiceRestApi::class.java).getHomeProjectList(pageNum)
     }
 
     fun getHomeArticleList(pageNum : Int) : Observable<HttpResult<PageBean<ArticleInfo>>> {
-        return RetrofitHelper.getService(ServiceRestApi::class.java).getHomeArticleList(pageNum)
+        return retrofitHelper.getService(ServiceRestApi::class.java).getHomeArticleList("$pageNum")
     }
 
+    fun getTopArticleList() : Observable<HttpResult<List<ArticleInfo>>> {
+
+        return retrofitHelper.getService(ServiceRestApi::class.java).getTopArticleList()
+    }
 
 }

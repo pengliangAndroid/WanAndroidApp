@@ -5,6 +5,7 @@ import androidx.annotation.NonNull
 import com.funny.appframework.utils.LogUtil
 import com.funny.appframework.utils.NetUtils
 import com.funny.wanandroid.BuildConfig
+import com.funny.wanandroid.WApplication
 import com.funny.wanandroid.WApplication.Companion.context
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,20 +17,17 @@ import java.io.IOException
 import java.net.CookieManager
 import java.net.CookiePolicy
 import java.util.concurrent.TimeUnit
-import kotlin.properties.Delegates
-
-
 
 
 /**
  * @author pengl
  */
 
-object RetrofitHelper{
-    private const val DEFAULT_TIMEOUT = 60L
+class RetrofitHelper{
+    private val DEFAULT_TIMEOUT = 60L
 
-    private var okHttpClient : OkHttpClient by Delegates.notNull()
-    private var retrofit : Retrofit by Delegates.notNull()
+    private var okHttpClient : OkHttpClient
+    private var retrofit : Retrofit
 
     init {
         okHttpClient = buildOkHttpClient()
@@ -60,7 +58,7 @@ object RetrofitHelper{
         builder.addInterceptor(logInterceptor)
 
         //cache
-        val httpCacheDirectory = File(context.getCacheDir(), "OkHttpCache")
+        val httpCacheDirectory = File(WApplication.context.cacheDir, "OkHttpCache")
         builder.cache(Cache(httpCacheDirectory, 10 * 1024 * 1024))
         builder.addInterceptor(CacheControlInterceptor())
 

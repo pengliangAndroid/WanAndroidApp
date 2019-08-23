@@ -4,5 +4,10 @@
 
     <string name="msg_splash_text">爱生活 爱Android</string>
 
-
+    <string name="msg_loading">正在加载</string>
+    <string name="msg_empty_view">暂无数据</string>
+    <string name="msg_error_view">加载失败，请重新加载~</string>
+    <string name="msg_no_network">当前无网络，请检查网络</string>
+    <string name="msg_error_retry">重新加载</string>
+    <string name="msg_no_network_retry">网络设置</string>
 </resources>

@@ -10,4 +10,8 @@ interface HomeArticleListView : MvpView{
     fun onGetDataSuccess(data: List<ArticleInfo>)
 
     fun onGetDataFail(error: String)
+
+    fun onGetTopDataSuccess(data: List<ArticleInfo>)
+
+    fun onGetTopDataFail(error: String)
 }

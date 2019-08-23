@@ -29,7 +29,7 @@ class WApplication : Application(){
     override fun onCreate() {
         super.onCreate()
 
-        context = this
+        context = applicationContext
 
         refWatcher = setupLeakCanary()
 

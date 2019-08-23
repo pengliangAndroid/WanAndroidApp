@@ -52,4 +52,15 @@
     <color name="yellow">#fff7d23e</color>
     <color name="green">#ff37c700</color>
     <color name="blue">#ff4285f4</color>
+
+    <color name="tag_red">#E24234</color>
+    <color name="tag_green">#009a61</color>
+
+    <color name="creamy_light">#E4E4E4</color>
+    <color name="divider_light">#D7D7D7</color>
+    <color name="divider_light_dd">#DDDDDD</color>
+
+
+    <color name="white_shape">#F9F9F9</color>
+    <color name="white_item">#F2F2F2</color>
 </resources>

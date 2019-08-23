@@ -10,9 +10,9 @@ import com.chad.library.adapter.base.BaseViewHolder
 abstract class CommonAdapter<T>(layoutResId: Int, data: List<T>) :
     BaseQuickAdapter<T, BaseViewHolder>(layoutResId, data) {
 
-    override fun convert(baseViewHolder: BaseViewHolder, item: T) {
-        convertViewItem(baseViewHolder, item)
+    override fun convert(holder: BaseViewHolder, item: T) {
+        convertViewItem(holder, item)
     }
 
-    abstract fun convertViewItem(baseViewHolder: BaseViewHolder, item: T)
+    abstract fun convertViewItem(holder: BaseViewHolder, item: T)
 }

@@ -2,7 +2,7 @@ package com.funny.appframework.data.net.exception
 
 
 import android.content.Context
-import com.funny.appframework.data.net.resp.BaseResp
+import com.funny.appframework.data.net.resp.HttpResult
 import com.funny.appframework.utils.LogUtil
 import io.reactivex.Observer
 
@@ -36,14 +36,13 @@ abstract class ApiSubscriber<T, R> : Observer<T> {
     }
 
     override fun onNext(t: T) {
-        val baseResp = t as BaseResp<*>
-        val meta = baseResp.meta
+        val baseResp = t as HttpResult<R>
 
-        if (meta == null || meta.code == 0) {
-            val model = baseResp.data as R
+        if (baseResp.errorCode == 0) {
+            val model = baseResp.data
             onSuccess(model)
         } else {
-            onFail(ApiException(meta.message,meta.code))
+            onFail(ApiException(baseResp.errorMsg,baseResp.errorCode))
         }
     }
 

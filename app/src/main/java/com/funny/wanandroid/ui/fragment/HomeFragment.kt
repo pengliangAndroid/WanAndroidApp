@@ -8,6 +8,7 @@ import com.funny.wanandroid.R
 import com.funny.wanandroid.ui.adapter.CommonViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_home.*
+import ui.fragment.HomeArticleListFragment
 
 /**
  * @author pengl
@@ -32,15 +33,17 @@ class HomeFragment : BaseFragment(){
         tabs.tabMode = TabLayout.MODE_SCROLLABLE
         val titles = arrayListOf("最新博文","最新项目")
 
-        tabs.addTab(tabs.newTab().setText(titles[0]))
-        tabs.addTab(tabs.newTab().setText(titles[1]))
+//        tabs.addTab(tabs.newTab().setText(titles[0]))
+//        tabs.addTab(tabs.newTab().setText(titles[1]))
 
         val titleList = arrayListOf<String>()
         val fragments = arrayListOf<Fragment>()
 
         for ((index,title) in titles.withIndex()){
             titleList.add(title)
+
             tabs.addTab(tabs.newTab().setText(title))
+
             if(index == 0)
                 fragments.add(HomeArticleListFragment())
             if(index == 1)

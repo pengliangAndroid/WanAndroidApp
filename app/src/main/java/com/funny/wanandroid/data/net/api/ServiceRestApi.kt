@@ -23,14 +23,14 @@ interface ServiceRestApi{
 
 
     @GET("article/list/{pageNum}/json")
-    fun getHomeArticleList(@Path("pageNum") pageNum : Int) : Observable<HttpResult<PageBean<ArticleInfo>>>
+    fun getHomeArticleList(@Path("pageNum") pageNum : String) : Observable<HttpResult<PageBean<ArticleInfo>>>
 
     @GET("article/list/{pageNum}/json")
     fun getArticleListByCid(@Path("pageNum") pageNum : Int,@Query("cid") cid : Int) : Observable<HttpResult<PageBean<ArticleInfo>>>
 
 
     @GET("article/top/json")
-    fun getTopArtcleList() : Observable<HttpResult<List<ArticleInfo>>>
+    fun getTopArticleList() : Observable<HttpResult<List<ArticleInfo>>>
 
 
     /**

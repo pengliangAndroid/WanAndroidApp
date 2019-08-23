@@ -56,13 +56,16 @@ data class ArticleInfo(
     val publishTime: Long,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Any>,
+    val tags: List<TagInfo>,
     val title: String,
     val type: Int,
     val userId: Int,
     val visible: Int,
-    val zan: Int
+    val zan: Int,
+    var isTop: Boolean
 )
+
+data class TagInfo(val name : String,val url : String)
 
 data class PageBean<T>(
     val curPage: Int,
@@ -71,7 +74,7 @@ data class PageBean<T>(
     val pageCount: Int,
     val size: Int,
     val total: Int,
-    val datas: List<T>
+    var datas: MutableList<T>
 )
 
 data class BannerInfo(
