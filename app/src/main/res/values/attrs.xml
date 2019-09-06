@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="themeCardBackgroundColor" format="reference|color" />
+    <attr name="themeContentBackgroundColor" format="reference|color" />
+    <attr name="themeContentTextColor" format="reference|color" />
+    <attr name="themeDividerColor" format="reference|color" />
+    <attr name="themeLinkColor" format="reference|color" />
+    <attr name="themeMidWhiteBackgroundColor" format="reference|color" />
+    <attr name="themeTextColor1" format="reference|color" />
+    <attr name="themeTextColor2" format="reference|color" />
+    <attr name="themeTextColor3" format="reference|color" />
+    <attr name="themeToolbarTextColor" format="reference|color" />
+    <attr name="themeWhiteBackgroundColor" format="reference|color" />
+    <attr name="themeWhiteToolbarBackgroundColor" format="reference|color" />
+    <attr name="themeWhiteToolbarTextColor" format="reference|color" />
+    <attr name="themeWindowBackgroundColor" format="reference|color" />
+</resources>

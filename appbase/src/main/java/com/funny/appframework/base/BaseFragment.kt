@@ -76,8 +76,9 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks{
         sb.replace(sb.length - 2, sb.length, "")
 
         //用户点击拒绝并不在询问时候调用
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-//            showToast(R.string.msg_permission_refuse_text)
+        val isDenied = EasyPermissions.somePermissionPermanentlyDenied(this, perms)
+        isDenied.let {
+            //            showToast(R.string.msg_permission_refuse_text)
 
             AppSettingsDialog.Builder(this)
                 .setRationale(getResString(R.string.msg_permission_rationale_text,sb.toString()))

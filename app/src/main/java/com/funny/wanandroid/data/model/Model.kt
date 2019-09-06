@@ -1,5 +1,8 @@
 package com.funny.appframework.data.model
 
+import android.os.Parcel
+import android.os.Parcelable
+
 /**
  * @author pengl
  */
@@ -38,34 +41,121 @@ data class Tag(
 )
 
 data class ArticleInfo(
-    val apkLink: String,
-    val author: String,
+    val apkLink: String?,
+    val author: String?,
     val chapterId: Int,
-    val chapterName: String,
+    val chapterName: String?,
     val collect: Boolean,
     val courseId: Int,
-    val desc: String,
-    val envelopePic: String,
+    val desc: String?,
+    val envelopePic: String?,
     val fresh: Boolean,
     val id: Int,
-    val link: String,
-    val niceDate: String,
-    val origin: String,
-    val prefix: String,
-    val projectLink: String,
+    val link: String?,
+    val niceDate: String?,
+    val origin: String?,
+    val prefix: String?,
+    val projectLink: String?,
     val publishTime: Long,
     val superChapterId: Int,
-    val superChapterName: String,
-    val tags: List<TagInfo>,
-    val title: String,
+    val superChapterName: String?,
+    val tags: List<TagInfo>?,
+    val title: String?,
     val type: Int,
     val userId: Int,
     val visible: Int,
     val zan: Int,
     var isTop: Boolean
-)
+) : Parcelable {
+    constructor(source: Parcel) : this(
+        source.readString(),
+        source.readString(),
+        source.readInt(),
+        source.readString(),
+        1 == source.readInt(),
+        source.readInt(),
+        source.readString(),
+        source.readString(),
+        1 == source.readInt(),
+        source.readInt(),
+        source.readString(),
+        source.readString(),
+        source.readString(),
+        source.readString(),
+        source.readString(),
+        source.readLong(),
+        source.readInt(),
+        source.readString(),
+        source.createTypedArrayList(TagInfo.CREATOR),
+        source.readString(),
+        source.readInt(),
+        source.readInt(),
+        source.readInt(),
+        source.readInt(),
+        1 == source.readInt()
+    )
 
-data class TagInfo(val name : String,val url : String)
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
+        writeString(apkLink)
+        writeString(author)
+        writeInt(chapterId)
+        writeString(chapterName)
+        writeInt((if (collect) 1 else 0))
+        writeInt(courseId)
+        writeString(desc)
+        writeString(envelopePic)
+        writeInt((if (fresh) 1 else 0))
+        writeInt(id)
+        writeString(link)
+        writeString(niceDate)
+        writeString(origin)
+        writeString(prefix)
+        writeString(projectLink)
+        writeLong(publishTime)
+        writeInt(superChapterId)
+        writeString(superChapterName)
+        writeTypedList(tags)
+        writeString(title)
+        writeInt(type)
+        writeInt(userId)
+        writeInt(visible)
+        writeInt(zan)
+        writeInt((if (isTop) 1 else 0))
+    }
+
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<ArticleInfo> = object : Parcelable.Creator<ArticleInfo> {
+            override fun createFromParcel(source: Parcel): ArticleInfo = ArticleInfo(source)
+            override fun newArray(size: Int): Array<ArticleInfo?> = arrayOfNulls(size)
+        }
+    }
+}
+
+
+data class TagInfo(val name: String?, val url: String?) : Parcelable {
+    constructor(source: Parcel) : this(
+        source.readString(),
+        source.readString()
+    )
+
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
+        writeString(name)
+        writeString(url)
+    }
+
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<TagInfo> = object : Parcelable.Creator<TagInfo> {
+            override fun createFromParcel(source: Parcel): TagInfo = TagInfo(source)
+            override fun newArray(size: Int): Array<TagInfo?> = arrayOfNulls(size)
+        }
+    }
+}
 
 data class PageBean<T>(
     val curPage: Int,

@@ -55,6 +55,10 @@ dependencies {
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.0'
 
+    implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
+
+    compile 'com.daimajia.numberprogressbar:library:1.4@aar'
+
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     implementation project(':appbase')

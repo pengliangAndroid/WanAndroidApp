@@ -1,15 +1,20 @@
 package ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.funny.appframework.base.BaseLazyFragment
 import com.funny.appframework.data.model.ArticleInfo
 import com.funny.appframework.mvp.HomeArticleListPresenter
 import com.funny.appframework.mvp.HomeArticleListView
 import com.funny.wanandroid.AppConstants
 import com.funny.wanandroid.R
+import com.funny.wanandroid.ui.activity.ArticleDetailActivity
+import com.funny.wanandroid.ui.activity.MainActivity
 import com.funny.wanandroid.ui.adapter.CommonAdapter
 import com.funny.wanandroid.widget.CustomLoadMoreView
 import com.funny.wanandroid.widget.DividerItemDecoration
@@ -43,6 +48,17 @@ class HomeArticleListFragment : BaseLazyFragment(),HomeArticleListView{
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.addItemDecoration(DividerItemDecoration(activity,DividerItemDecoration.VERTICAL_LIST,R.drawable.white_divider_10_bg))
+
+        recyclerView.addOnItemTouchListener(object: OnItemClickListener(){
+            override fun onSimpleItemClick(badapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+                 //startActivity<ArticleDetailActivity>()
+                val mainAct = activity as MainActivity
+//                mainAct.swipeBackHelper.forward(ArticleDetailActivity::class.java)
+                val intent = Intent(mainAct,ArticleDetailActivity::class.java)
+                intent.putExtra(ArticleDetailActivity.EXTRA_ENTRY_BEAN,adapter.getItem(position))
+                mainAct.swipeBackHelper.forward(intent)
+            }
+        })
 
         adapter = object : CommonAdapter<ArticleInfo>(R.layout.item_home_article, mutableListOf()){
             override fun convertViewItem(holder: BaseViewHolder, item: ArticleInfo) {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.ArticleDetailActivity">
+
+    <WebView android:layout_marginTop="56dp" android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/web_view"/>
+
+    <LinearLayout android:orientation="vertical" android:id="@+id/layout_toolbar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:background="?themeWhiteToolbarBackgroundColor" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        </androidx.appcompat.widget.Toolbar>
+        <RelativeLayout android:id="@+id/top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/shadow_line_webview_top" />
+            <com.daimajia.numberprogressbar.NumberProgressBar android:id="@+id/progressbar" android:layout_width="fill_parent" android:layout_height="1.5dip" app:progress_reached_color="@color/colorPrimary" app:progress_unreached_color="@color/color_translucent"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>

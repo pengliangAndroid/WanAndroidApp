@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
 import kotlin.properties.Delegates
@@ -30,6 +31,8 @@ class WApplication : Application(){
         super.onCreate()
 
         context = applicationContext
+
+        BGASwipeBackHelper.init(this, null)
 
         refWatcher = setupLeakCanary()
 

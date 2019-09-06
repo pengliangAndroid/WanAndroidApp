@@ -11,19 +11,17 @@ import org.jetbrains.anko.startActivity
 
 class SplashActivity : BaseActivity() {
 
-    private var alphaAnimation : AlphaAnimation? = null
-
     override fun getLayoutId(): Int {
-        isStatusCompat = false
         return R.layout.activity_splash
     }
 
     override fun initViews(savedState: Bundle?) {
-        tv_version_name.text = "v${DeviceUtils.getVersionName(this)}"
+        val tvVersionName = tv_version_name
+        tvVersionName.text = "v${DeviceUtils.getVersionName(this)}"
 
-        alphaAnimation = AlphaAnimation(0.2f,1.0f)
-        alphaAnimation?.duration = 2000
-        alphaAnimation?.setAnimationListener(object : Animation.AnimationListener{
+        val alphaAnimation = AlphaAnimation(0.2f,1.0f)
+        alphaAnimation.duration = 2000
+        alphaAnimation.setAnimationListener(object : Animation.AnimationListener{
             override fun onAnimationRepeat(p0: Animation?) {
             }
 
@@ -37,7 +35,9 @@ class SplashActivity : BaseActivity() {
             }
 
         })
-        iv_web_icon.startAnimation(alphaAnimation)
+
+        val ivWebIcon = iv_web_icon
+        ivWebIcon.startAnimation(alphaAnimation)
     }
 
     override fun initData() {

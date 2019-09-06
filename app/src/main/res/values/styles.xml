@@ -10,18 +10,93 @@
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowContentOverlay">@null</item>-->
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
     </style>
 
     <style name="AppTheme.Fullscreen" parent="AppTheme.NoActionBar">
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="SplashTheme" parent="@style/AppTheme.NoActionBar">
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+    <style name="AppTheme.NoActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name="ToolbarOverflow" parent="@android:style/Widget.ActionButton.Overflow">
+        <item name="android:src">@mipmap/ic_more_horiz_black_24</item>
+    </style>
+
+    <style name="BaseAppThemeDark" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@color/color828FAE</item>
+        <item name="android:textColorSecondary">@color/color6A707E</item>
+        <item name="android:windowBackground">@color/color151B20</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="md_btn_negative_selector">@drawable/md_btn_selector_dark</item>-->
+        <!--<item name="md_btn_neutral_selector">@drawable/md_btn_selector_dark</item>-->
+        <!--<item name="md_btn_positive_selector">@drawable/md_btn_selector_dark</item>-->
+        <!--<item name="md_btn_stacked_selector">@drawable/md_selector_dark</item>-->
+        <!--<item name="md_divider">@color/md_divider_white</item>-->
+        <!--<item name="md_list_selector">@drawable/md_selector_dark</item>-->
+        <!--<item name="themeCardBackgroundColor">@drawable/card_dark_background</item>-->
+        <!--<item name="themeContentBackgroundColor">@drawable/layout_selector_dark</item>-->
+        <item name="themeContentTextColor">@color/colorAAAAAA</item>
+        <item name="themeDividerColor">@color/color2D3950</item>
+        <item name="themeLinkColor">@color/color828FAE</item>
+        <item name="themeMidWhiteBackgroundColor">@color/color212731</item>
+        <item name="themeTextColor1">@color/color828FAE</item>
+        <item name="themeTextColor2">@color/color6A707E</item>
+        <item name="themeTextColor3">@color/color6A707E</item>
+        <item name="themeToolbarTextColor">@color/colorDEDEDE</item>
+        <item name="themeWhiteBackgroundColor">@color/color212731</item>
+        <item name="themeWhiteToolbarBackgroundColor">@color/color212731</item>
+        <item name="themeWhiteToolbarTextColor">@color/color828FAE</item>
+        <item name="themeWindowBackgroundColor">@color/color151B20</item>
+        <item name="colorPrimary">@color/color212731</item>
+        <item name="colorPrimaryDark">@color/color212731</item>
+        <item name="colorAccent">@color/color828FAE</item>
+        <item name="colorControlActivated">@color/color828FAE</item>
+    </style>
+
+    <style name="BaseAppThemeLight" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorPrimary">@color/text_dark1</item>
+        <item name="android:textColorSecondary">@color/text_dark2</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!--<item name="md_btn_negative_selector">@drawable/md_btn_selector</item>-->
+        <!--<item name="md_btn_neutral_selector">@drawable/md_btn_selector</item>-->
+        <!--<item name="md_btn_positive_selector">@drawable/md_btn_selector</item>-->
+        <!--<item name="md_btn_stacked_selector">@drawable/md_selector</item>-->
+        <!--<item name="md_divider">@color/md_divider_black</item>-->
+        <!--<item name="md_list_selector">@drawable/md_selector</item>-->
+        <!--<item name="themeCardBackgroundColor">@drawable/card_light_background</item>-->
+        <!--<item name="themeContentBackgroundColor">@drawable/layout_selector</item>-->
+        <item name="themeContentTextColor">@color/text_dark1</item>
+        <item name="themeDividerColor">@color/divider_light</item>
+        <item name="themeLinkColor">@color/link_light</item>
+        <item name="themeMidWhiteBackgroundColor">#ecffffff</item>
+        <item name="themeTextColor1">@color/text_dark1</item>
+        <item name="themeTextColor2">@color/text_dark2</item>
+        <item name="themeTextColor3">@color/text_dark3</item>
+        <item name="themeToolbarTextColor">@color/white</item>
+        <item name="themeWhiteBackgroundColor">@color/white</item>
+        <item name="themeWhiteToolbarBackgroundColor">@color/white</item>
+        <item name="themeWhiteToolbarTextColor">@color/text_dark1</item>
+        <item name="themeWindowBackgroundColor">@color/window_background_light</item>
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryDark">@color/blue_primary_dark</item>
+        <item name="colorAccent">@color/blue_primary</item>
+        <item name="colorControlActivated">@color/blue_primary</item>
+    </style>
 </resources>

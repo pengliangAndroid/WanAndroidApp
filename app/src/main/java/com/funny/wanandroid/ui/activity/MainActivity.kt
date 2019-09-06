@@ -3,29 +3,41 @@ package com.funny.wanandroid.ui.activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.funny.appframework.base.BaseActivity
+import com.funny.appframework.base.showToast
+import com.funny.appframework.utils.LogUtil
 import com.funny.wanandroid.R
+import com.funny.wanandroid.common.BaseSwipeBackActivity
 import com.funny.wanandroid.ui.fragment.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : BaseActivity() {
-    private var homeFragment : Fragment? = null
-    private var systemFragment : Fragment? = null
-    private var publicFragment : Fragment? = null
-    private var projectFragment : Fragment? = null
-    private var mineFragment : Fragment? = null
+class MainActivity : BaseSwipeBackActivity() {
+
+    private var homeFragment : Fragment?= null
+    private var systemFragment : Fragment?= null
+    private var publicFragment : Fragment?= null
+    private var projectFragment : Fragment?= null
+    private var mineFragment : Fragment?= null
 
     private var curIndex: Int = -1
 
-    override fun getLayoutId(): Int {
+    private var bottomNavView : BottomNavigationView? = null
 
+    override fun setupCustomToolbar(): Boolean {
+        LogUtil.i("MainActivity shouldSetupCustomToolbar")
+        setContentView(getLayoutId(),true,0)
+        return true
+    }
+
+    override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
 
     override fun initViews(savedState: Bundle?) {
         setTabSelection(0)
-        bottomNavView.setOnNavigationItemSelectedListener{
+        bottomNavView = bottom_nav_view
+        bottomNavView?.setOnNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.navigation_home -> setTabSelection(0)
                 R.id.navigation_type -> setTabSelection(1)
@@ -53,48 +65,67 @@ class MainActivity : BaseActivity() {
         // 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
         hideFragments(transaction)
 
+        var fragment : Fragment? = null
+        var isShow = false
+
         when (index) {
             0 -> {
                 if (homeFragment == null) {
                     homeFragment = HomeFragment.newInstance()
-                    transaction.add(R.id.flContent, homeFragment!!, HomeFragment::class.java.simpleName)
+                    isShow = false
                 } else {
-                    transaction.show(homeFragment!!)
+                    isShow = true
                 }
+
+                fragment = homeFragment
             }
             1 -> {
                 if (systemFragment == null) {
                     systemFragment = KnowledgeSystemFragment()
-                    transaction.add(R.id.flContent, systemFragment!!, KnowledgeSystemFragment::class.java.simpleName)
+                    isShow = false
                 } else {
-                    transaction.show(systemFragment!!)
+                    isShow = true
                 }
+
+                fragment = systemFragment
             }
             2 -> {
                 if (publicFragment == null) {
                     publicFragment = PublicPlatformFragment()
-                    transaction.add(R.id.flContent, publicFragment!!, PublicPlatformFragment::class.java.simpleName)
+                    isShow = false
                 } else {
-                    transaction.show(publicFragment!!)
+                    isShow = true
                 }
+
+                fragment = publicFragment
             }
             3 -> {
                 if (projectFragment == null) {
                     projectFragment = ProjectFragment()
-                    transaction.add(R.id.flContent, projectFragment!!, ProjectFragment::class.java.simpleName)
+                    isShow = false
                 } else {
-                    transaction.show(projectFragment!!)
+                    isShow = true
                 }
+
+                fragment = projectFragment
             }
             4 -> {
                 if (mineFragment == null) {
                     mineFragment = MineFragment()
-                    transaction.add(R.id.flContent, mineFragment!!, MineFragment::class.java.simpleName)
+                    isShow = false
                 } else {
-                    transaction.show(mineFragment!!)
+                    isShow = true
                 }
+
+                fragment = mineFragment
             }
         }
+
+        fragment?.let {
+            if(isShow) showFragment(transaction,it)
+            else addFragment(transaction,it)
+        }
+
         transaction.commitAllowingStateLoss()
     }
 
@@ -105,11 +136,36 @@ class MainActivity : BaseActivity() {
      * @param transaction 用于对Fragment执行操作的事务
      */
     private fun hideFragments(transaction: FragmentTransaction) {
-        homeFragment?.let { transaction.hide(homeFragment!!) }
-        systemFragment?.let { transaction.hide(systemFragment!!) }
-        publicFragment?.let { transaction.hide(publicFragment!!) }
-        projectFragment?.let { transaction.hide(projectFragment!!) }
-        mineFragment?.let { transaction.hide(mineFragment!!) }
+        homeFragment?.let { transaction.hide(it) }
+        systemFragment?.let { transaction.hide(it) }
+        publicFragment?.let { transaction.hide(it) }
+        projectFragment?.let { transaction.hide(it) }
+        mineFragment?.let { transaction.hide(it) }
+    }
+
+    private fun addFragment(transaction: FragmentTransaction,fragment: Fragment){
+        transaction.add(R.id.fl_content,fragment,fragment.javaClass.simpleName)
+    }
+
+    private fun showFragment(transaction: FragmentTransaction,fragment: Fragment){
+        transaction.show(fragment)
+    }
+
+    override fun isSupportSwipeBack(): Boolean {
+        return false
+    }
+
+    var lastClickTime = 0L
+
+    override fun onBackPressed() {
+        val curClickTime = System.currentTimeMillis()
+        if(curClickTime - lastClickTime >= 2000){
+            lastClickTime = curClickTime
+            showToast(R.string.msg_back_app)
+            return
+        }
+
+        finish()
     }
 
 }

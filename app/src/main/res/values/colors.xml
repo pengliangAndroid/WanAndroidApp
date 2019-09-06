@@ -51,7 +51,6 @@
     <color name="red">#ffc9280f</color>
     <color name="yellow">#fff7d23e</color>
     <color name="green">#ff37c700</color>
-    <color name="blue">#ff4285f4</color>
 
     <color name="tag_red">#E24234</color>
     <color name="tag_green">#009a61</color>
@@ -63,4 +62,41 @@
 
     <color name="white_shape">#F9F9F9</color>
     <color name="white_item">#F2F2F2</color>
+
+    <color name="color151B20">#ff151b20</color>
+    <color name="color202020">#ff202020</color>
+    <color name="color212731">#ff212731</color>
+    <color name="color2C2C2C">#ff2c2c2c</color>
+    <color name="color2D3950">#ff2d3950</color>
+    <color name="color303030">#ff303030</color>
+    <color name="color3A3A3A">#ff3a3a3a</color>
+    <color name="color3F3F3F">#ff3f3f3f</color>
+    <color name="color666666">#ff666666</color>
+    <color name="color6A707E">#ff6a707e</color>
+    <color name="color757575">#ff757575</color>
+    <color name="color828FAE">#ff828fae</color>
+    <color name="color868686">#ff868686</color>
+    <color name="color8A9599">#ff8a9599</color>
+    <color name="colorAA2C2C2C">#aa2c2c2c</color>
+    <color name="colorAAAAAA">#ffaaaaaa</color>
+    <color name="colorD6D6D6">#ffd6d6d6</color>
+    <color name="colorDEDEDE">#ffdedede</color>
+
+    <color name="text_dark1">#ff1c1c1e</color>
+    <color name="text_dark2">#ff67727b</color>
+    <color name="text_dark3">#ff8a9aa9</color>
+
+    <color name="link_light">#ff275b8c</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#ff4285f4</color>
+    <color name="blue_primary">#ff007fff</color>
+    <color name="blue_primary_dark">#ff0072e5</color>
+
+    <color name="window_background">#fff4f6f9</color>
+    <color name="window_background_dark">#ff050709</color>
+    <color name="window_background_light">#fff4f6f9</color>
+
+    <color name="status_bar">#ff0072e5</color>
+    <color name="status_bar_black">#ffc6c6c6</color>
 </resources>
